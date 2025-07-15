@@ -65,19 +65,22 @@ document.addEventListener("DOMContentLoaded", async () => {
           });
 
           if (!res.ok) throw new Error("Error al actualizar cita");
-          /*
+          
           // Notificar al paciente (endpoint externo simulado)
-          await fetch("https://httpbin.org/post", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              idCita,
-              estado: nuevoEstado,
-              fechaActualizacion
-            })
-          });
+          await fetch(
+            CONFIG.CONFIRMAR_CITA,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                idCita,
+                estado: nuevoEstado,
+                fechaActualizacion,
+              }),
+            }
+          );
 
-          console.log(`✅ Notificado paciente de cita ${idCita}`);*/
+          console.log(`✅ Notificado paciente de cita ${idCita}`);
         } catch (err) {
           console.error("❌ Error al actualizar o notificar:", err);
           alert("Error al actualizar o notificar");
